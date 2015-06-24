@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DefPackage-SoundDef>
+
+  <SoundDef>
+    <defName>GaussShot</defName>
+    <eventNames />
+    <maxSimultaneous>1</maxSimultaneous>
+    <subSounds>
+      <li>
+        <name>shot</name>
+        <grains>
+          <li Class="AudioGrain_Clip">
+            <clipPath>Weapons/GunShot</clipPath>         
+        </li>
+        </grains>
+        <volumeRange>
+          <min>40.58823</min>
+          <max>42.58823</max>
+        </volumeRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+
+</DefPackage-SoundDef>

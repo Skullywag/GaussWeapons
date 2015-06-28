@@ -82,7 +82,7 @@
     <projectile>
       <damageDef>Bullet</damageDef>
       <damageAmountBase>16</damageAmountBase>
-      <speed>120</speed>
+      <speed>100</speed>
     </projectile>
   </ThingDef>
 
@@ -102,15 +102,15 @@
       <AccuracyShort>0.76</AccuracyShort>
       <AccuracyMedium>0.56</AccuracyMedium>
       <AccuracyLong>0.38</AccuracyLong>
-      <RangedWeapon_Cooldown>0.66</RangedWeapon_Cooldown>
+      <RangedWeapon_Cooldown>0.96</RangedWeapon_Cooldown>
     </statBases>
     <verbs>
       <li>
         <verbClass>Verb_Shoot</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <projectileDef>Bullet_Gauss</projectileDef>
-        <warmupTicks>90</warmupTicks>
-        <range>24</range>
+        <warmupTicks>120</warmupTicks>
+        <range>28</range>
         <soundCast>GaussShot</soundCast>
         <soundCastTail>GunTail_Heavy</soundCastTail>
         <muzzleFlashScale>15</muzzleFlashScale>
@@ -134,17 +134,17 @@
       <AccuracyShort>0.98</AccuracyShort>
       <AccuracyMedium>0.78</AccuracyMedium>
       <AccuracyLong>0.65</AccuracyLong>
-      <RangedWeapon_Cooldown>0.66</RangedWeapon_Cooldown>
+      <RangedWeapon_Cooldown>0.96</RangedWeapon_Cooldown>
     </statBases>
     <verbs>
       <li>
         <verbClass>Verb_Shoot</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <projectileDef>Bullet_Gauss</projectileDef>
-        <warmupTicks>81</warmupTicks>
-        <range>24</range>
+        <warmupTicks>130</warmupTicks>
+        <range>30</range>
         <burstShotCount>3</burstShotCount>
-        <ticksBetweenBurstShots>7</ticksBetweenBurstShots>
+        <ticksBetweenBurstShots>9</ticksBetweenBurstShots>
         <soundCast>GaussShot</soundCast>
         <soundCastTail>GunTail_Light</soundCastTail>
         <muzzleFlashScale>9</muzzleFlashScale>
@@ -168,17 +168,17 @@
       <AccuracyShort>0.93</AccuracyShort>
       <AccuracyMedium>0.83</AccuracyMedium>
       <AccuracyLong>0.70</AccuracyLong>
-      <RangedWeapon_Cooldown>0.66</RangedWeapon_Cooldown>
+      <RangedWeapon_Cooldown>0.96</RangedWeapon_Cooldown>
     </statBases>
     <verbs>
       <li>
         <verbClass>Verb_Shoot</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <projectileDef>Bullet_Gauss</projectileDef>
-        <warmupTicks>126</warmupTicks>
-        <range>32</range>
+        <warmupTicks>156</warmupTicks>
+        <range>34</range>
         <burstShotCount>3</burstShotCount>
-        <ticksBetweenBurstShots>7</ticksBetweenBurstShots>
+        <ticksBetweenBurstShots>11</ticksBetweenBurstShots>
         <soundCast>GaussShot</soundCast>
         <soundCastTail>GunTail_Medium</soundCastTail>
         <muzzleFlashScale>9</muzzleFlashScale>
@@ -206,17 +206,17 @@
       <AccuracyShort>0.70</AccuracyShort>
       <AccuracyMedium>0.47</AccuracyMedium>
       <AccuracyLong>0.28</AccuracyLong>
-      <RangedWeapon_Cooldown>1.33</RangedWeapon_Cooldown>
+      <RangedWeapon_Cooldown>1.63</RangedWeapon_Cooldown>
     </statBases>
     <verbs>
       <li>
         <verbClass>Verb_Shoot</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <projectileDef>Bullet_Gauss</projectileDef>
-        <warmupTicks>136</warmupTicks>
-        <range>21</range>
+        <warmupTicks>166</warmupTicks>
+        <range>26</range>
         <burstShotCount>6</burstShotCount>
-        <ticksBetweenBurstShots>11</ticksBetweenBurstShots>
+        <ticksBetweenBurstShots>18</ticksBetweenBurstShots>
         <soundCast>GaussShot</soundCast>
         <soundCastTail>GunTail_Heavy</soundCastTail>
         <muzzleFlashScale>9</muzzleFlashScale>
@@ -240,17 +240,17 @@
       <AccuracyShort>0.92</AccuracyShort>
       <AccuracyMedium>0.92</AccuracyMedium>
       <AccuracyLong>0.94</AccuracyLong>
-      <RangedWeapon_Cooldown>2.33</RangedWeapon_Cooldown>
+      <RangedWeapon_Cooldown>2.63</RangedWeapon_Cooldown>
     </statBases>
     <verbs>
       <li>
         <verbClass>Verb_Shoot</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <projectileDef>Bullet_Gauss</projectileDef>
-        <warmupTicks>276</warmupTicks>
+        <warmupTicks>300</warmupTicks>
         <burstShotCount>3</burstShotCount>
-        <ticksBetweenBurstShots>3</ticksBetweenBurstShots>
-        <range>45</range>
+        <ticksBetweenBurstShots>12</ticksBetweenBurstShots>
+        <range>50</range>
         <soundCast>GaussShot</soundCast>
         <soundCastTail>GunTail_Heavy</soundCastTail>
         <muzzleFlashScale>9</muzzleFlashScale>
@@ -277,15 +277,15 @@
       <AccuracyShort>0.93</AccuracyShort>
       <AccuracyMedium>0.83</AccuracyMedium>
       <AccuracyLong>0.70</AccuracyLong>
-      <RangedWeapon_Cooldown>1.0</RangedWeapon_Cooldown>
+      <RangedWeapon_Cooldown>1.4</RangedWeapon_Cooldown>
     </statBases>
     <verbs>
       <li>
         <verbClass>Verb_Shoot</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <projectileDef>Bullet_Gauss</projectileDef>
-        <warmupTicks>126</warmupTicks>
-        <range>17</range>
+        <warmupTicks>156</warmupTicks>
+        <range>20</range>
         <burstShotCount>3</burstShotCount>
         <ticksBetweenBurstShots>0</ticksBetweenBurstShots>
         <soundCast>GaussShot</soundCast>

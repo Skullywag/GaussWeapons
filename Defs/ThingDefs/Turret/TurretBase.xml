@@ -67,7 +67,6 @@
       <turretBurstCooldownTicks>600</turretBurstCooldownTicks>
       <turretTopgraphicPath>Things/Building/GaussTurretGun</turretTopgraphicPath>
     </building>
-    <designationHotKey>U</designationHotKey>
   </ThingDef>
 
 </ThingDefs>

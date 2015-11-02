@@ -63,7 +63,7 @@
     <category>Projectile</category>
     <tickerType>Normal</tickerType>
     <altitudeLayer>Projectile</altitudeLayer>
-    <thingClass>Bullet</thingClass>
+    <thingClass>GaussWeapons.Projectile_Gauss</thingClass>
     <label>bullet</label>
     <useHitPoints>False</useHitPoints>
     <neverMultiSelect>True</neverMultiSelect>
@@ -82,6 +82,20 @@
     <projectile>
       <damageDef>Bullet</damageDef>
       <damageAmountBase>16</damageAmountBase>
+      <speed>100</speed>
+    </projectile>
+  </ThingDef>
+
+<ThingDef ParentName="BaseBullet">
+    <defName>Bullet_GaussSniper</defName>
+    <label>Bullet</label>
+    <graphicData>
+      <texPath>Things/Projectile/Gauss</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>45</damageAmountBase>
       <speed>100</speed>
     </projectile>
   </ThingDef>
@@ -144,7 +158,7 @@
         <warmupTicks>130</warmupTicks>
         <range>30</range>
         <burstShotCount>3</burstShotCount>
-        <ticksBetweenBurstShots>9</ticksBetweenBurstShots>
+        <ticksBetweenBurstShots>5</ticksBetweenBurstShots>
         <soundCast>GaussShot</soundCast>
         <soundCastTail>GunTail_Light</soundCastTail>
         <muzzleFlashScale>9</muzzleFlashScale>
@@ -178,7 +192,7 @@
         <warmupTicks>156</warmupTicks>
         <range>34</range>
         <burstShotCount>3</burstShotCount>
-        <ticksBetweenBurstShots>11</ticksBetweenBurstShots>
+        <ticksBetweenBurstShots>7</ticksBetweenBurstShots>
         <soundCast>GaussShot</soundCast>
         <soundCastTail>GunTail_Medium</soundCastTail>
         <muzzleFlashScale>9</muzzleFlashScale>
@@ -246,10 +260,8 @@
       <li>
         <verbClass>Verb_Shoot</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
-        <projectileDef>Bullet_Gauss</projectileDef>
+        <projectileDef>Bullet_GaussSniper</projectileDef>
         <warmupTicks>300</warmupTicks>
-        <burstShotCount>3</burstShotCount>
-        <ticksBetweenBurstShots>12</ticksBetweenBurstShots>
         <range>50</range>
         <soundCast>GaussShot</soundCast>
         <soundCastTail>GunTail_Heavy</soundCastTail>

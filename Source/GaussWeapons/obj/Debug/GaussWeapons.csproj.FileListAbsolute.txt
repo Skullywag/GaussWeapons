@@ -13,3 +13,8 @@ C:\Users\mjsku_000\Desktop\RimWorldAlpha12Win\RimWorld906Win\Mods\GaussWeapons\S
 C:\Users\mjsku_000\Desktop\RimWorldAlpha12Win\RimWorld906Win\Mods\GaussWeapons\Source\GaussWeapons\obj\Debug\GaussWeapons.csprojResolveAssemblyReference.cache
 C:\Users\mjsku_000\Desktop\RimWorldAlpha12Win\RimWorld906Win\Mods\GaussWeapons\Source\GaussWeapons\obj\Debug\GaussWeapons.dll
 C:\Users\mjsku_000\Desktop\RimWorldAlpha12Win\RimWorld906Win\Mods\GaussWeapons\Source\GaussWeapons\obj\Debug\GaussWeapons.pdb
+C:\Users\mjsku\Desktop\RimWorldAlpha12dWin\RimWorld914Win\Mods\GaussWeapons\Source\GaussWeapons\bin\Debug\GaussWeapons.dll
+C:\Users\mjsku\Desktop\RimWorldAlpha12dWin\RimWorld914Win\Mods\GaussWeapons\Source\GaussWeapons\bin\Debug\GaussWeapons.pdb
+C:\Users\mjsku\Desktop\RimWorldAlpha12dWin\RimWorld914Win\Mods\GaussWeapons\Source\GaussWeapons\obj\Debug\GaussWeapons.csprojResolveAssemblyReference.cache
+C:\Users\mjsku\Desktop\RimWorldAlpha12dWin\RimWorld914Win\Mods\GaussWeapons\Source\GaussWeapons\obj\Debug\GaussWeapons.dll
+C:\Users\mjsku\Desktop\RimWorldAlpha12dWin\RimWorld914Win\Mods\GaussWeapons\Source\GaussWeapons\obj\Debug\GaussWeapons.pdb

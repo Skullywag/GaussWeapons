@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <GameData>
 
-
   <ThingDef Name="ResourceBase" Abstract="True">
     <thingClass>ThingWithComps</thingClass>
     <label>unspecified resource</label>
@@ -27,10 +26,10 @@
 
   <ThingDef ParentName="ResourceBase">
     <defName>GaussMagnet</defName>
-    <label>Gauss Magnet</label>
-    <description>An extremely powerful magnet.</description>
+    <label>Gauss Magnets</label>
+    <description>A box of extremely powerful magnets.</description>
     <graphicData>
-      <texPath>Things/Item/Resource/GaussMagnet</texPath>
+      <texPath>Things/Item/Resource/Gaussbox</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <resourceReadoutPriority>Middle</resourceReadoutPriority>

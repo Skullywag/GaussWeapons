@@ -1,7 +1,5 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using Verse;
-using RimWorld;
 
 namespace GaussWeapons
 {
@@ -38,21 +36,12 @@ namespace GaussWeapons
         protected virtual void Explode()
         {
             this.Destroy(DestroyMode.Vanish);
-            BodyPartDamageInfo value = new BodyPartDamageInfo(null, new BodyPartDepth?(BodyPartDepth.Outside));
-            ExplosionInfo explosionInfo = default(ExplosionInfo);
-            explosionInfo.center = base.Position;
-            explosionInfo.radius = this.def.projectile.explosionRadius;
-            explosionInfo.dinfo = new DamageInfo(this.def.projectile.damageDef, 999, this.launcher, new BodyPartDamageInfo?(value), null);
-            explosionInfo.postExplosionSpawnThingDef = this.def.projectile.postExplosionSpawnThingDef;
-            explosionInfo.explosionSpawnChance = this.def.projectile.explosionSpawnChance;
-            explosionInfo.explosionSound = this.def.projectile.soundExplode;
-            explosionInfo.projectile = this.def;
-            explosionInfo.DoExplosion();
+            GenExplosion.DoExplosion(base.Position, this.def.projectile.explosionRadius, this.def.projectile.damageDef, this.launcher, this.def.projectile.soundExplode, this.def, this.equipmentDef, this.def.projectile.postExplosionSpawnThingDef, this.def.projectile.explosionSpawnChance, false);
             for (int i = 0; i < 4; i++)
-			{
-                ThrowSmokeBlue(explosionInfo.center.ToVector3Shifted() + Gen.RandomHorizontalVector(explosionInfo.radius * 0.7f), explosionInfo.radius * 0.6f);
-                ThrowMicroSparksBlue(explosionInfo.center.ToVector3Shifted() + Gen.RandomHorizontalVector(explosionInfo.radius * 0.7f));
-			}
+            {
+                ThrowSmokeBlue(Position.ToVector3Shifted() + Gen.RandomHorizontalVector(this.def.projectile.explosionRadius * 0.7f), this.def.projectile.explosionRadius * 0.6f);
+                ThrowMicroSparksBlue(Position.ToVector3Shifted() + Gen.RandomHorizontalVector(this.def.projectile.explosionRadius * 0.7f));
+            }
         }
         public static void ThrowSmokeBlue(Vector3 loc, float size)
         {

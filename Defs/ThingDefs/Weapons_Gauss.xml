@@ -17,7 +17,7 @@
     <statBases>
       <MaxHitPoints>100</MaxHitPoints>
       <Flammability>1.0</Flammability>
-      <DeteriorationRate>1</DeteriorationRate>
+      <DeteriorationRate>2</DeteriorationRate>
       <SellPriceFactor>0.5</SellPriceFactor>
     </statBases>
     <altitudeLayer>Item</altitudeLayer>
@@ -31,19 +31,16 @@
       <li>ITab_Art</li>
     </inspectorTabs>
     <comps>
-      <li>
-        <compClass>CompForbiddable</compClass>
-      </li>
+      <li Class="CompProperties_Forbiddable"/>
       <li>
         <compClass>CompEquippable</compClass>
       </li>
       <li>
         <compClass>CompQuality</compClass>
       </li>
-      <li>
-        <compClass>CompArt</compClass>
-        <nameMaker>NamerGun</nameMaker>
-        <descriptionMaker>ArtWeaponGun</descriptionMaker>
+      <li Class="CompProperties_Art">
+        <nameMaker>ArtName_WeaponGun</nameMaker>
+        <descriptionMaker>ArtDescription_WeaponGun</descriptionMaker>
         <minQualityForArtistic>Excellent</minQualityForArtistic>
       </li>
     </comps>
@@ -52,7 +49,27 @@
     </smeltProducts>
   </ThingDef>
 
+  <ThingDef Name="BaseMakeableGun" ParentName="BaseGun" Abstract="True">
+    <recipeMaker>
+      <workSpeedStat>SmithingSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Smith</effectWorking>
+      <soundWorking>Recipe_Smith</soundWorking>
+      <recipeUsers>
+        <li>TableMachining</li>
+      </recipeUsers>
+      <unfinishedThingDef>UnfinishedGun</unfinishedThingDef>
+    </recipeMaker>
+  </ThingDef>
+
   <ThingDef Name="BaseHumanGun" ParentName="BaseGun" Abstract="True">
+    <weaponTags>
+      <li>Gun</li>
+    </weaponTags>
+    <soundInteract>EnergyPickup</soundInteract>
+  </ThingDef>
+
+  <ThingDef Name="BaseHumanMakeableGun" ParentName="BaseMakeableGun" Abstract="True">
     <weaponTags>
       <li>Gun</li>
     </weaponTags>
@@ -75,6 +92,7 @@
   <ThingDef ParentName="BaseBullet">
     <defName>Bullet_Gauss</defName>
     <label>Bullet</label>
+    <thingClass>GaussWeapons.Projectile_Gauss</thingClass>
     <graphicData>
       <texPath>Things/Projectile/Gauss</texPath>
       <graphicClass>Graphic_Single</graphicClass>
@@ -84,11 +102,42 @@
       <damageAmountBase>16</damageAmountBase>
       <speed>100</speed>
     </projectile>
+    <comps>
+      <li Class="GaussWeapons.CompProperties_ExtraDamage">
+        <compClass>GaussWeapons.CompExtraDamage</compClass>
+        <damageDef>EMP</damageDef>
+        <damageAmount>15</damageAmount>
+        <chanceToProc>0.1</chanceToProc>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>Bullet_GaussSniper</defName>
+    <label>Bullet</label>
+    <thingClass>GaussWeapons.Projectile_Gauss</thingClass>
+    <graphicData>
+      <texPath>Things/Projectile/Gauss</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>45</damageAmountBase>
+      <speed>100</speed>
+    </projectile>
+    <comps>
+      <li Class="GaussWeapons.CompProperties_ExtraDamage">
+        <compClass>GaussWeapons.CompExtraDamage</compClass>
+        <damageDef>EMP</damageDef>
+        <damageAmount>20</damageAmount>
+        <chanceToProc>0.2</chanceToProc>
+      </li>
+    </comps>
   </ThingDef>
 
   <!-- ============================================================== -->
 
-  <ThingDef ParentName="BaseHumanGun">
+  <ThingDef ParentName="BaseHumanMakeableGun">
     <defName>Gun_GaussPistol</defName>
     <label>Gauss Pistol</label>
     <description>A gauss pistol sidearm.</description>
@@ -104,9 +153,18 @@
       <AccuracyLong>0.38</AccuracyLong>
       <RangedWeapon_Cooldown>0.96</RangedWeapon_Cooldown>
     </statBases>
+    <costList>
+      <Steel>40</Steel>
+      <Plasteel>20</Plasteel>
+      <Components>2</Components>
+      <GaussMagnet>1</GaussMagnet>
+    </costList>
+    <weaponTags>
+      <li>MedievalShields_ValidSidearm</li>
+    </weaponTags>
     <verbs>
       <li>
-        <verbClass>Verb_Shoot</verbClass>
+        <verbClass>GaussWeapons.Verb_ShootJamReload</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <projectileDef>Bullet_Gauss</projectileDef>
         <warmupTicks>120</warmupTicks>
@@ -116,11 +174,18 @@
         <muzzleFlashScale>9</muzzleFlashScale>
       </li>
     </verbs>
+    <comps>
+      <li Class="GaussWeapons.CompProperties_Reloader">
+        <compClass>GaussWeapons.CompReloader</compClass>
+        <roundPerMag>7</roundPerMag>
+        <reloadTick>180</reloadTick>
+      </li>
+    </comps>
   </ThingDef>
 
   <!-- ========================================================= -->
 
-  <ThingDef ParentName="BaseHumanGun">
+  <ThingDef ParentName="BaseHumanMakeableGun">
     <defName>Gun_GaussCarbine</defName>
     <label>Gauss Carbine</label>
     <description>A short range, lightweight Gauss rifle.</description>
@@ -136,25 +201,38 @@
       <AccuracyLong>0.65</AccuracyLong>
       <RangedWeapon_Cooldown>0.96</RangedWeapon_Cooldown>
     </statBases>
+    <costList>
+      <Steel>60</Steel>
+      <Plasteel>30</Plasteel>
+      <Components>3</Components>
+      <GaussMagnet>1</GaussMagnet>
+    </costList>
     <verbs>
       <li>
-        <verbClass>Verb_Shoot</verbClass>
+        <verbClass>GaussWeapons.Verb_ShootJamReload</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <projectileDef>Bullet_Gauss</projectileDef>
         <warmupTicks>130</warmupTicks>
         <range>30</range>
         <burstShotCount>3</burstShotCount>
-        <ticksBetweenBurstShots>9</ticksBetweenBurstShots>
+        <ticksBetweenBurstShots>5</ticksBetweenBurstShots>
         <soundCast>GaussShot</soundCast>
         <soundCastTail>GunTail_Light</soundCastTail>
         <muzzleFlashScale>9</muzzleFlashScale>
       </li>
     </verbs>
+    <comps>
+      <li Class="GaussWeapons.CompProperties_Reloader">
+        <compClass>GaussWeapons.CompReloader</compClass>
+        <roundPerMag>20</roundPerMag>
+        <reloadTick>190</reloadTick>
+      </li>
+    </comps>
   </ThingDef>
   
   <!-- =================================================== -->
 
-  <ThingDef ParentName="BaseHumanGun">
+  <ThingDef ParentName="BaseHumanMakeableGun">
     <defName>Gun_GaussRifle</defName>
     <label>Gauss Rifle</label>
     <description>A gauss rifle with good stopping power and range.</description>
@@ -170,29 +248,38 @@
       <AccuracyLong>0.70</AccuracyLong>
       <RangedWeapon_Cooldown>0.96</RangedWeapon_Cooldown>
     </statBases>
+    <costList>
+      <Steel>90</Steel>
+      <Plasteel>50</Plasteel>
+      <Components>4</Components>
+      <GaussMagnet>1</GaussMagnet>
+    </costList>
     <verbs>
       <li>
-        <verbClass>Verb_Shoot</verbClass>
+        <verbClass>GaussWeapons.Verb_ShootJamReload</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <projectileDef>Bullet_Gauss</projectileDef>
         <warmupTicks>156</warmupTicks>
         <range>34</range>
         <burstShotCount>3</burstShotCount>
-        <ticksBetweenBurstShots>11</ticksBetweenBurstShots>
+        <ticksBetweenBurstShots>7</ticksBetweenBurstShots>
         <soundCast>GaussShot</soundCast>
         <soundCastTail>GunTail_Medium</soundCastTail>
         <muzzleFlashScale>9</muzzleFlashScale>
       </li>
     </verbs>
-    <building>
-      <turretBurstCooldownTicks>130</turretBurstCooldownTicks>
-      <turretTopgraphicPath>Things/Item/Equipment/WeaponRanged/Gauss/GaussRifle_top</turretTopgraphicPath>
-    </building>
+    <comps>
+      <li Class="GaussWeapons.CompProperties_Reloader">
+        <compClass>GaussWeapons.CompReloader</compClass>
+        <roundPerMag>30</roundPerMag>
+        <reloadTick>190</reloadTick>
+      </li>
+    </comps>
   </ThingDef>
   
   <!-- ============================================================== -->
 
-  <ThingDef ParentName="BaseHumanGun">
+  <ThingDef ParentName="BaseHumanMakeableGun">
     <defName>Gun_GaussScatter</defName>
     <label>Gauss Scattergun</label>
     <description>A gauss scattergun, able to lay down lots of fire at the cost of accuracy at long ranges.</description>
@@ -208,9 +295,15 @@
       <AccuracyLong>0.28</AccuracyLong>
       <RangedWeapon_Cooldown>1.63</RangedWeapon_Cooldown>
     </statBases>
+    <costList>
+      <Steel>70</Steel>
+      <Plasteel>40</Plasteel>
+      <Components>4</Components>
+      <GaussMagnet>1</GaussMagnet>
+    </costList>
     <verbs>
       <li>
-        <verbClass>Verb_Shoot</verbClass>
+        <verbClass>GaussWeapons.Verb_ShootJamReload</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <projectileDef>Bullet_Gauss</projectileDef>
         <warmupTicks>166</warmupTicks>
@@ -222,11 +315,18 @@
         <muzzleFlashScale>9</muzzleFlashScale>
       </li>
     </verbs>
+    <comps>
+      <li Class="GaussWeapons.CompProperties_Reloader">
+        <compClass>GaussWeapons.CompReloader</compClass>
+        <roundPerMag>100</roundPerMag>
+        <reloadTick>300</reloadTick>
+      </li>
+    </comps>
   </ThingDef>
 
   <!-- ============================================================== -->
 
-  <ThingDef ParentName="BaseHumanGun">
+  <ThingDef ParentName="BaseHumanMakeableGun">
     <defName>Gun_GaussPrecision</defName>
     <label>Gauss Precision Rifle</label>
     <description>A gauss sniper rifle, highly accurate but with a low rate of fire.</description>
@@ -242,20 +342,31 @@
       <AccuracyLong>0.94</AccuracyLong>
       <RangedWeapon_Cooldown>2.63</RangedWeapon_Cooldown>
     </statBases>
+    <costList>
+      <Steel>90</Steel>
+      <Plasteel>50</Plasteel>
+      <Components>6</Components>
+      <GaussMagnet>1</GaussMagnet>
+    </costList>
     <verbs>
       <li>
-        <verbClass>Verb_Shoot</verbClass>
+        <verbClass>GaussWeapons.Verb_ShootJamReload</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
-        <projectileDef>Bullet_Gauss</projectileDef>
+        <projectileDef>Bullet_GaussSniper</projectileDef>
         <warmupTicks>300</warmupTicks>
-        <burstShotCount>3</burstShotCount>
-        <ticksBetweenBurstShots>12</ticksBetweenBurstShots>
         <range>50</range>
         <soundCast>GaussShot</soundCast>
         <soundCastTail>GunTail_Heavy</soundCastTail>
         <muzzleFlashScale>9</muzzleFlashScale>
       </li>
     </verbs>
+    <comps>
+      <li Class="GaussWeapons.CompProperties_Reloader">
+        <compClass>GaussWeapons.CompReloader</compClass>
+        <roundPerMag>3</roundPerMag>
+        <reloadTick>200</reloadTick>
+      </li>
+    </comps>
     <weaponTags>
       <li>SniperRifle</li>
     </weaponTags>
@@ -263,7 +374,7 @@
   
   <!--===========================================================-->
 
-  <ThingDef ParentName="BaseHumanGun">
+  <ThingDef ParentName="BaseHumanMakeableGun">
     <defName>Gun_GaussShotgun</defName>
     <label>Gauss Shotgun</label>
     <description>A gauss shotgun, wide spread and good at close range.</description>
@@ -279,9 +390,15 @@
       <AccuracyLong>0.70</AccuracyLong>
       <RangedWeapon_Cooldown>1.4</RangedWeapon_Cooldown>
     </statBases>
+    <costList>
+      <Steel>80</Steel>
+      <Plasteel>40</Plasteel>
+      <Components>3</Components>
+      <GaussMagnet>1</GaussMagnet>
+    </costList>
     <verbs>
       <li>
-        <verbClass>Verb_Shoot</verbClass>
+        <verbClass>GaussWeapons.Verb_ShootJamReload</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <projectileDef>Bullet_Gauss</projectileDef>
         <warmupTicks>156</warmupTicks>
@@ -293,6 +410,13 @@
         <muzzleFlashScale>9</muzzleFlashScale>
       </li>
     </verbs>
+    <comps>
+      <li Class="GaussWeapons.CompProperties_Reloader">
+        <compClass>GaussWeapons.CompReloader</compClass>
+        <roundPerMag>18</roundPerMag>
+        <reloadTick>240</reloadTick>
+      </li>
+    </comps>
   </ThingDef>
   
 </ThingDefs>

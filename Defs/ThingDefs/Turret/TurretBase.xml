@@ -21,6 +21,7 @@
       <graphicClass>Graphic_Single</graphicClass>
       <drawSize>(3,3)</drawSize>
     </graphicData>
+    <uiIconPath>Things/Building/GaussTurretUI</uiIconPath>
     <altitudeLayer>Waist</altitudeLayer>
     <statBases>
       <MaxHitPoints>110</MaxHitPoints>
@@ -30,18 +31,17 @@
     </statBases>
     <tickerType>Normal</tickerType>
     <comps>
-      <li>
-        <compClass>CompExplosive</compClass>
+      <li Class="CompProperties_Explosive">
         <explosiveRadius>3.9</explosiveRadius>
         <explosiveDamageType>Bomb</explosiveDamageType>
       </li>
-      <li>
-        <compClass>CompForbiddable</compClass>
-      </li>
-      <li>
+      <li Class="CompProperties_Forbiddable"/>
+      <li Class="CompProperties_Power">
         <compClass>CompPowerTrader</compClass>
         <basePowerConsumption>350</basePowerConsumption>
       </li>
+      <li Class="CompProperties_Flickable"/>
+      <li Class="CompProperties_Breakdownable"/>
     </comps>
     <description>A gauss turret that automatically fires at nearby enemies. Explodes when damaged.</description>
     <passability>PassThroughOnly</passability>
@@ -56,8 +56,8 @@
     <costList>
       <Steel>75</Steel>
       <GaussMagnet>2</GaussMagnet>
+      <Components>3</Components>
     </costList>
-    <combatTargetBuilding>true</combatTargetBuilding>
     <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
     <designationCategory>Security</designationCategory>
     <specialDisplayRadius>25.9</specialDisplayRadius>
@@ -67,6 +67,9 @@
       <turretBurstCooldownTicks>600</turretBurstCooldownTicks>
       <turretTopgraphicPath>Things/Building/GaussTurretGun</turretTopgraphicPath>
     </building>
+    <researchPrerequisites>
+      <li>GaussTurret</li>
+    </researchPrerequisites>
   </ThingDef>
 
 </ThingDefs>

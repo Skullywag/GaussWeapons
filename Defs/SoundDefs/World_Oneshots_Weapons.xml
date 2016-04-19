@@ -7,7 +7,6 @@
     <maxSimultaneous>1</maxSimultaneous>
     <subSounds>
       <li>
-        <name>shot</name>
         <grains>
           <li Class="AudioGrain_Clip">
             <clipPath>Weapons/GunShot</clipPath>         
@@ -16,6 +15,25 @@
         <volumeRange>
           <min>40.58823</min>
           <max>42.58823</max>
+        </volumeRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+
+  <SoundDef>
+    <defName>EnergyPickup</defName>
+    <eventNames />
+    <maxSimultaneous>1</maxSimultaneous>
+    <subSounds>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Clip">
+            <clipPath>Weapons/EnergyWeaponPickUp</clipPath>
+          </li>
+        </grains>
+        <volumeRange>
+          <min>100</min>
+          <max>100</max>
         </volumeRange>
       </li>
     </subSounds>

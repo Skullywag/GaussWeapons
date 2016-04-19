@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using UnityEngine; 
+﻿using UnityEngine; 
 using Verse;  
 using Verse.Sound;
 using RimWorld;
@@ -18,10 +14,14 @@ namespace GaussWeapons
         // Miscellaneous.
         public const float empChance = 0.1f;
 
+        // Comps
+        public CompExtraDamage compED;
+
         public override void SpawnSetup()
 		{
-			base.SpawnSetup();        
-		}
+			base.SpawnSetup(); 
+            compED = this.GetComp<CompExtraDamage>();
+        }
 
         /// <summary>
         /// Impacts a pawn/object or the ground.
@@ -36,10 +36,10 @@ namespace GaussWeapons
                 DamageInfo dinfo = new DamageInfo(this.def.projectile.damageDef, damageAmountBase, this.launcher, this.ExactRotation.eulerAngles.y, new BodyPartDamageInfo?(value), this.equipmentDef);
                 hitThing.TakeDamage(dinfo);
                 Pawn pawn = hitThing as Pawn;
-                if (pawn != null && !pawn.Downed && Rand.Value < Projectile_Gauss.empChance)
+                if (pawn != null && !pawn.Downed && Rand.Value < compED.chanceToProc)
                 {
                     MoteThrower.ThrowMicroSparks(this.destination);
-                    hitThing.TakeDamage(new DamageInfo(DamageDefOf.EMP, 10, this.launcher, null, null));
+                    hitThing.TakeDamage(new DamageInfo(DefDatabase<DamageDef>.GetNamed(compED.damageDef, true), compED.damageAmount, this.launcher, null, null));
                 }
             }
             else

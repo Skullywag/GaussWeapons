@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <LanguageData>
 
-    <CR_ReloadLabel>Reload</CR_ReloadLabel>
-    <CR_ReloadDesc>Reloads this gun.</CR_ReloadDesc>
+  <Gauss_ReloadLabel>Reload</Gauss_ReloadLabel>
+  <Gauss_ReloadDesc>Reloads this gun.</Gauss_ReloadDesc>
 
-    <CR_ReloadingMote>Reloading!</CR_ReloadingMote>
-    <CR_ReloadedMote>Reloaded!</CR_ReloadedMote>
+  <Gauss_ReloadingMote>Reloading!</Gauss_ReloadingMote>
+  <Gauss_ReloadedMote>Reloaded!</Gauss_ReloadedMote>	
 
-    <CR_SuppressedMote>Suppressed!</CR_SuppressedMote>
-	
 </LanguageData>

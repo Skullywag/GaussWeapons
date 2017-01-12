@@ -18,12 +18,13 @@
       <MaxHitPoints>100</MaxHitPoints>
       <Flammability>1.0</Flammability>
       <DeteriorationRate>2</DeteriorationRate>
-      <SellPriceFactor>0.5</SellPriceFactor>
+      <Beauty>-6</Beauty>
     </statBases>
     <altitudeLayer>Item</altitudeLayer>
     <alwaysHaulable>True</alwaysHaulable>
     <tickerType>Never</tickerType>
-    <techLevel>Midworld</techLevel>
+    <techLevel>Industrial</techLevel>
+    <smeltable>true</smeltable>
     <thingCategories>
       <li>WeaponsRanged</li>
     </thingCategories>
@@ -44,9 +45,6 @@
         <minQualityForArtistic>Excellent</minQualityForArtistic>
       </li>
     </comps>
-    <smeltProducts>
-      <Steel>20</Steel>
-    </smeltProducts>
   </ThingDef>
 
   <ThingDef Name="BaseMakeableGun" ParentName="BaseGun" Abstract="True">
@@ -156,7 +154,7 @@
     <costList>
       <Steel>40</Steel>
       <Plasteel>20</Plasteel>
-      <Components>2</Components>
+      <Component>2</Component>
       <GaussMagnet>1</GaussMagnet>
     </costList>
     <weaponTags>
@@ -164,23 +162,16 @@
     </weaponTags>
     <verbs>
       <li>
-        <verbClass>GaussWeapons.Verb_ShootJamReload</verbClass>
+        <verbClass>Verb_Shoot</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <projectileDef>Bullet_Gauss</projectileDef>
-        <warmupTicks>120</warmupTicks>
+        <warmupTime>0.3</warmupTime>
         <range>28</range>
         <soundCast>GaussShot</soundCast>
         <soundCastTail>GunTail_Heavy</soundCastTail>
         <muzzleFlashScale>9</muzzleFlashScale>
       </li>
     </verbs>
-    <comps>
-      <li Class="GaussWeapons.CompProperties_Reloader">
-        <compClass>GaussWeapons.CompReloader</compClass>
-        <roundPerMag>7</roundPerMag>
-        <reloadTick>180</reloadTick>
-      </li>
-    </comps>
   </ThingDef>
 
   <!-- ========================================================= -->
@@ -204,15 +195,15 @@
     <costList>
       <Steel>60</Steel>
       <Plasteel>30</Plasteel>
-      <Components>3</Components>
+      <Component>3</Component>
       <GaussMagnet>1</GaussMagnet>
     </costList>
     <verbs>
       <li>
-        <verbClass>GaussWeapons.Verb_ShootJamReload</verbClass>
+        <verbClass>Verb_Shoot</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <projectileDef>Bullet_Gauss</projectileDef>
-        <warmupTicks>130</warmupTicks>
+        <warmupTime>0.5</warmupTime>
         <range>30</range>
         <burstShotCount>3</burstShotCount>
         <ticksBetweenBurstShots>5</ticksBetweenBurstShots>
@@ -221,13 +212,6 @@
         <muzzleFlashScale>9</muzzleFlashScale>
       </li>
     </verbs>
-    <comps>
-      <li Class="GaussWeapons.CompProperties_Reloader">
-        <compClass>GaussWeapons.CompReloader</compClass>
-        <roundPerMag>20</roundPerMag>
-        <reloadTick>190</reloadTick>
-      </li>
-    </comps>
   </ThingDef>
   
   <!-- =================================================== -->
@@ -251,15 +235,15 @@
     <costList>
       <Steel>90</Steel>
       <Plasteel>50</Plasteel>
-      <Components>4</Components>
+      <Component>4</Component>
       <GaussMagnet>1</GaussMagnet>
     </costList>
     <verbs>
       <li>
-        <verbClass>GaussWeapons.Verb_ShootJamReload</verbClass>
+        <verbClass>Verb_Shoot</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <projectileDef>Bullet_Gauss</projectileDef>
-        <warmupTicks>156</warmupTicks>
+        <warmupTime>0.9</warmupTime>
         <range>34</range>
         <burstShotCount>3</burstShotCount>
         <ticksBetweenBurstShots>7</ticksBetweenBurstShots>
@@ -268,13 +252,6 @@
         <muzzleFlashScale>9</muzzleFlashScale>
       </li>
     </verbs>
-    <comps>
-      <li Class="GaussWeapons.CompProperties_Reloader">
-        <compClass>GaussWeapons.CompReloader</compClass>
-        <roundPerMag>30</roundPerMag>
-        <reloadTick>190</reloadTick>
-      </li>
-    </comps>
   </ThingDef>
   
   <!-- ============================================================== -->
@@ -298,15 +275,15 @@
     <costList>
       <Steel>70</Steel>
       <Plasteel>40</Plasteel>
-      <Components>4</Components>
+      <Component>4</Component>
       <GaussMagnet>1</GaussMagnet>
     </costList>
     <verbs>
       <li>
-        <verbClass>GaussWeapons.Verb_ShootJamReload</verbClass>
+        <verbClass>Verb_Shoot</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <projectileDef>Bullet_Gauss</projectileDef>
-        <warmupTicks>166</warmupTicks>
+        <warmupTime>1.4</warmupTime>
         <range>26</range>
         <burstShotCount>6</burstShotCount>
         <ticksBetweenBurstShots>18</ticksBetweenBurstShots>
@@ -315,13 +292,6 @@
         <muzzleFlashScale>9</muzzleFlashScale>
       </li>
     </verbs>
-    <comps>
-      <li Class="GaussWeapons.CompProperties_Reloader">
-        <compClass>GaussWeapons.CompReloader</compClass>
-        <roundPerMag>100</roundPerMag>
-        <reloadTick>300</reloadTick>
-      </li>
-    </comps>
   </ThingDef>
 
   <!-- ============================================================== -->
@@ -345,28 +315,21 @@
     <costList>
       <Steel>90</Steel>
       <Plasteel>50</Plasteel>
-      <Components>6</Components>
+      <Component>6</Component>
       <GaussMagnet>1</GaussMagnet>
     </costList>
     <verbs>
       <li>
-        <verbClass>GaussWeapons.Verb_ShootJamReload</verbClass>
+        <verbClass>Verb_Shoot</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <projectileDef>Bullet_GaussSniper</projectileDef>
-        <warmupTicks>300</warmupTicks>
+        <warmupTime>4.0</warmupTime>
         <range>50</range>
         <soundCast>GaussShot</soundCast>
         <soundCastTail>GunTail_Heavy</soundCastTail>
         <muzzleFlashScale>9</muzzleFlashScale>
       </li>
     </verbs>
-    <comps>
-      <li Class="GaussWeapons.CompProperties_Reloader">
-        <compClass>GaussWeapons.CompReloader</compClass>
-        <roundPerMag>3</roundPerMag>
-        <reloadTick>200</reloadTick>
-      </li>
-    </comps>
     <weaponTags>
       <li>SniperRifle</li>
     </weaponTags>
@@ -393,15 +356,15 @@
     <costList>
       <Steel>80</Steel>
       <Plasteel>40</Plasteel>
-      <Components>3</Components>
+      <Component>3</Component>
       <GaussMagnet>1</GaussMagnet>
     </costList>
     <verbs>
       <li>
-        <verbClass>GaussWeapons.Verb_ShootJamReload</verbClass>
+        <verbClass>Verb_Shoot</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <projectileDef>Bullet_Gauss</projectileDef>
-        <warmupTicks>156</warmupTicks>
+        <warmupTime>0.9</warmupTime>
         <range>20</range>
         <burstShotCount>3</burstShotCount>
         <ticksBetweenBurstShots>0</ticksBetweenBurstShots>
@@ -410,13 +373,6 @@
         <muzzleFlashScale>9</muzzleFlashScale>
       </li>
     </verbs>
-    <comps>
-      <li Class="GaussWeapons.CompProperties_Reloader">
-        <compClass>GaussWeapons.CompReloader</compClass>
-        <roundPerMag>18</roundPerMag>
-        <reloadTick>240</reloadTick>
-      </li>
-    </comps>
   </ThingDef>
   
 </ThingDefs>

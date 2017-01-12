@@ -5,12 +5,10 @@ using UnityEngine;
 
 namespace GaussWeapons
 {
-    public class Verb_ShootJamReload : Verb_LaunchProjectile
+    public class Verb_ShootJam : Verb_LaunchProjectile
     {
         public bool isJammed = false;
         public SoundDef jamSound = SoundDef.Named("Misfire");
-        private bool done;
-        private CompReloader compAmmo;
 
         protected override int ShotsPerBurst
         {
@@ -18,46 +16,6 @@ namespace GaussWeapons
             {
                 return this.verbProps.burstShotCount;
             }
-        }
-
-        protected override bool TryCastShot()
-        {
-            if (!this.done)
-            {
-                this.compAmmo = this.ownerEquipment.GetComp<CompReloader>();
-                this.done = true;
-            }
-            bool result;
-            if (this.compAmmo == null)
-            {
-                Log.ErrorOnce("No compAmmo found!", 12423);
-                result = base.TryCastShot();
-            }
-            else
-            {
-                if (this.compAmmo.needReload || this.compAmmo.count <= 0)
-                {
-                    this.compAmmo.StartReload();
-                    result = false;
-                }
-                else
-                {
-                    if (!base.TryCastShot())
-                    {
-                        result = false;
-                    }
-                    else
-                    {
-                        this.compAmmo.count--;
-                        if (this.compAmmo.count <= 0)
-                        {
-                            this.compAmmo.StartReload();
-                        }
-                        result = true;
-                    }
-                }
-            }
-            return result;
         }
 
         public override void WarmupComplete()
@@ -70,8 +28,8 @@ namespace GaussWeapons
                 {
                     isJammed = false;
                     Vector3 loc = new Vector3((float)this.caster.Position.x + 1f, (float)this.caster.Position.y, (float)this.caster.Position.z + 1f);
-                    MoteThrower.ThrowText(loc, "Jam Cleared", Color.white);
-                    this.ownerEquipment.def.soundInteract.PlayOneShot(caster.Position);
+                    MoteMaker.ThrowText(loc, caster.Map, "Jam Cleared", Color.white);
+                    this.ownerEquipment.def.soundInteract.PlayOneShot(new TargetInfo(caster.Position, caster.Map, false));
                     return;
                 }
                 else
@@ -119,8 +77,8 @@ namespace GaussWeapons
             if(Rand.Range(1, jamChance) == 1)
             {
                 Vector3 loc = new Vector3((float)this.caster.Position.x + 1f, (float)this.caster.Position.y, (float)this.caster.Position.z + 1f);
-                MoteThrower.ThrowText(loc, "Jammed", Color.white);
-                SoundStarter.PlayOneShot(jamSound, caster.Position);
+                MoteMaker.ThrowText(loc, caster.Map, "Jammed", Color.white);
+                SoundStarter.PlayOneShot(jamSound, new TargetInfo(caster.Position, caster.Map, false));
                 isJammed = true;
                 return;
             }

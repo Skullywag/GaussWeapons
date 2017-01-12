@@ -22,11 +22,11 @@
       <drawSize>(3,3)</drawSize>
     </graphicData>
     <uiIconPath>Things/Building/GaussTurretUI</uiIconPath>
-    <altitudeLayer>Waist</altitudeLayer>
+    <altitudeLayer>Building</altitudeLayer>
     <statBases>
       <MaxHitPoints>110</MaxHitPoints>
       <Flammability>1.0</Flammability>
-      <WorkToMake>2500</WorkToMake>
+      <WorkToBuild>2500</WorkToBuild>
       <Beauty>-60</Beauty>
     </statBases>
     <tickerType>Normal</tickerType>
@@ -56,7 +56,7 @@
     <costList>
       <Steel>75</Steel>
       <GaussMagnet>2</GaussMagnet>
-      <Components>3</Components>
+      <Component>3</Component>
     </costList>
     <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
     <designationCategory>Security</designationCategory>
@@ -64,7 +64,7 @@
     <building>
       <ai_combatDangerous>true</ai_combatDangerous>
       <turretGunDef>Gun_GaussTurret</turretGunDef>
-      <turretBurstCooldownTicks>600</turretBurstCooldownTicks>
+      <turretBurstCooldownTime>600</turretBurstCooldownTime>
       <turretTopgraphicPath>Things/Building/GaussTurretGun</turretTopgraphicPath>
     </building>
     <researchPrerequisites>

@@ -4,15 +4,24 @@
   <ThingDef ParentName="BaseBullet">
     <defName>Bullet_GaussTurret</defName>
     <label>Bullet</label>
+    <thingClass>GaussWeapons.Projectile_Gauss</thingClass>
     <graphicData>
       <texPath>Things/Projectile/Gauss</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <projectile>
       <damageDef>Bullet</damageDef>
-      <damageAmountBase>50</damageAmountBase>
-      <speed>120</speed>
+      <damageAmountBase>16</damageAmountBase>
+      <speed>100</speed>
     </projectile>
+    <comps>
+      <li Class="GaussWeapons.CompProperties_ExtraDamage">
+        <compClass>GaussWeapons.CompExtraDamage</compClass>
+        <damageDef>EMP</damageDef>
+        <damageAmount>15</damageAmount>
+        <chanceToProc>0.1</chanceToProc>
+      </li>
+    </comps>
   </ThingDef>
 
   <ThingDef ParentName="BaseHumanGun">
@@ -42,7 +51,7 @@
         <verbClass>Verb_Shoot</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <projectileDef>Bullet_GaussTurret</projectileDef>
-        <warmupTicks>240</warmupTicks>
+        <warmupTime>1.5</warmupTime>
         <range>52</range>
         <soundCast>GaussShot</soundCast>
         <soundCastTail>GunTail_Medium</soundCastTail>

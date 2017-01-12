@@ -3,11 +3,12 @@
  
 	<ResearchProjectDef>
 		<defName>GaussTurret</defName>
-		<label>large scale gauss tech</label>
+		<label>large scale gauss magnets</label>
 		<description>Allows the construction of gauss based turrets.</description>
-		<totalCost>1500</totalCost>
+    <baseCost>1500</baseCost>
+    <techLevel>Spacer</techLevel>
     <prerequisites>
-      <li>MicroelectronicsBasics</li>
+      <li>MultibarrelWeapons</li>
     </prerequisites>
 	</ResearchProjectDef>
 

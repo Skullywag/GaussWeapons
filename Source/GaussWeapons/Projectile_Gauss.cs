@@ -11,15 +11,12 @@ namespace GaussWeapons
         public int tickCounter = 0;
         public Thing hitThing = null;
 
-        // Miscellaneous.
-        public const float empChance = 0.1f;
-
         // Comps
         public CompExtraDamage compED;
 
-        public override void SpawnSetup()
+        public override void SpawnSetup(Map map)
 		{
-			base.SpawnSetup(); 
+			base.SpawnSetup(map); 
             compED = this.GetComp<CompExtraDamage>();
         }
 
@@ -28,41 +25,43 @@ namespace GaussWeapons
         /// </summary>
         protected override void Impact(Thing hitThing)
         {
+            Map map = base.Map;
             base.Impact(hitThing);
             if (hitThing != null)
             {
                 int damageAmountBase = this.def.projectile.damageAmountBase;
-                BodyPartDamageInfo value = new BodyPartDamageInfo(null, null);
-                DamageInfo dinfo = new DamageInfo(this.def.projectile.damageDef, damageAmountBase, this.launcher, this.ExactRotation.eulerAngles.y, new BodyPartDamageInfo?(value), this.equipmentDef);
+                ThingDef equipmentDef = this.equipmentDef;
+                DamageInfo dinfo = new DamageInfo(this.def.projectile.damageDef, damageAmountBase, this.ExactRotation.eulerAngles.y, this.launcher, null, equipmentDef);
                 hitThing.TakeDamage(dinfo);
                 Pawn pawn = hitThing as Pawn;
                 if (pawn != null && !pawn.Downed && Rand.Value < compED.chanceToProc)
                 {
-                    MoteThrower.ThrowMicroSparks(this.destination);
-                    hitThing.TakeDamage(new DamageInfo(DefDatabase<DamageDef>.GetNamed(compED.damageDef, true), compED.damageAmount, this.launcher, null, null));
+                    MoteMaker.ThrowMicroSparks(this.destination, Map);
+                    hitThing.TakeDamage(new DamageInfo(DefDatabase<DamageDef>.GetNamed(compED.damageDef, true), compED.damageAmount, this.ExactRotation.eulerAngles.y, this.launcher, null, null));
                 }
             }
             else
             {
-                SoundDefOf.BulletImpactGround.PlayOneShot(base.Position);
-                MoteThrower.ThrowStatic(this.ExactPosition, ThingDefOf.Mote_ShotHit_Dirt, 1f);
-                ThrowMicroSparksBlue(this.ExactPosition);
+                SoundDefOf.BulletImpactGround.PlayOneShot(new TargetInfo(base.Position, map, false));
+                MoteMaker.MakeStaticMote(this.ExactPosition, map, ThingDefOf.Mote_ShotHit_Dirt, 1f);
+                ThrowMicroSparksBlue(this.ExactPosition, Map);
             }
         }
-        public static void ThrowMicroSparksBlue(Vector3 loc)
+
+        public static void ThrowMicroSparksBlue(Vector3 loc, Map map)
         {
-            if (!loc.ShouldSpawnMotesAt() || MoteCounter.Saturated)
+            if (!loc.ShouldSpawnMotesAt(map) || map.moteCounter.SaturatedLowPriority)
             {
                 return;
             }
             MoteThrown moteThrown = (MoteThrown)ThingMaker.MakeThing(ThingDef.Named("Mote_MicroSparksBlue"), null);
-            moteThrown.ScaleUniform = Rand.Range(0.8f, 1.2f);
-            moteThrown.exactRotationRate = Rand.Range(-0.2f, 0.2f);
+            moteThrown.Scale = Rand.Range(0.8f, 1.2f);
+            moteThrown.rotationRate = Rand.Range(-12f, 12f);
             moteThrown.exactPosition = loc;
             moteThrown.exactPosition -= new Vector3(0.5f, 0f, 0.5f);
             moteThrown.exactPosition += new Vector3(Rand.Value, 0f, Rand.Value);
-            moteThrown.SetVelocityAngleSpeed((float)Rand.Range(35, 45), Rand.Range(0.02f, 0.02f));
-            GenSpawn.Spawn(moteThrown, loc.ToIntVec3());
+            moteThrown.SetVelocity((float)Rand.Range(35, 45), 1.2f);
+            GenSpawn.Spawn(moteThrown, loc.ToIntVec3(), map);
         }
     }
 }

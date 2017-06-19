@@ -14,9 +14,9 @@ namespace GaussWeapons
         // Comps
         public CompExtraDamage compED;
 
-        public override void SpawnSetup(Map map)
+        public override void SpawnSetup(Map map, bool respawningAfterLoad)
 		{
-			base.SpawnSetup(map); 
+			base.SpawnSetup(map, respawningAfterLoad); 
             compED = this.GetComp<CompExtraDamage>();
         }
 
